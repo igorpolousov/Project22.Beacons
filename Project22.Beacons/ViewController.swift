@@ -74,6 +74,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Нужна для обнаружения всех маяков в радиусе действия и добавляет их в массив в случае обнаружения  
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         if let beacon = beacons.first {
             update(distance: beacon.proximity)
