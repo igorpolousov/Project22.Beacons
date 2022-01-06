@@ -22,24 +22,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfR-CO-7GS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfR-CO-7GS">
                                 <rect key="frame" x="97.5" y="286" width="219" height="48"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VrR-ck-9TQ">
+                                <rect key="frame" x="87" y="538" width="240" height="240"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="VrR-ck-9TQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="5l9-21-wgQ"/>
                             <constraint firstItem="riA-GE-RUG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6Od-pj-QOS"/>
                             <constraint firstItem="TfR-CO-7GS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="97.5" id="Gyh-iX-93m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VrR-ck-9TQ" secondAttribute="bottom" constant="84" id="HqU-OT-b3L"/>
                             <constraint firstItem="TfR-CO-7GS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="242" id="PQW-za-Tb2"/>
+                            <constraint firstItem="VrR-ck-9TQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="U10-7v-pPQ"/>
                             <constraint firstItem="TfR-CO-7GS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VBn-Nd-fov"/>
                             <constraint firstItem="riA-GE-RUG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="XZK-iJ-fZh"/>
+                            <constraint firstItem="VrR-ck-9TQ" firstAttribute="top" secondItem="riA-GE-RUG" secondAttribute="bottom" constant="61" id="Xeh-6S-Ew7"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="circleView" destination="VrR-ck-9TQ" id="7Bn-MT-hPV"/>
                         <outlet property="deviceNameLabel" destination="TfR-CO-7GS" id="9oY-CA-6qH"/>
                         <outlet property="distanceReading" destination="riA-GE-RUG" id="H13-3I-G9G"/>
                     </connections>
@@ -52,6 +61,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

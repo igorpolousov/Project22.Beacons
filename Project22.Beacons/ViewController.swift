@@ -10,15 +10,17 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    
+    // view для круга
+    @IBOutlet var circleView: UIView!
+    // Название найденного устройства
     @IBOutlet var deviceNameLabel: UILabel!
-    // Надпись на экране
+    // Надпись для обозначения дистанции
     @IBOutlet var distanceReading: UILabel!
     // Менеджер положения: начинает и останавливает предоставлениеданных о местоположении
     var locationManager: CLLocationManager?
     //переменная для определения найден маяк или нет
     var isDetected = false
-    
+    // проверка уникальности uuid
     var currentBeaconUuid: UUID?
     
     
@@ -34,6 +36,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         view.backgroundColor = .gray
         // начальное название устройства
         deviceNameLabel.text = "Device not detected"
+        
+        circleView.layer.cornerRadius = 128
+        circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
     }
 
     // Проверка авторизации и возможностей сканирования устройством
@@ -69,32 +74,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // При обнаружении устройства меняет цвет фона и надпись на экране
     func update(distance: CLProximity, name: String) {
-        UIView.animate(withDuration: 1) {
-           
+        UIView.animate(withDuration: 1) { [weak self] in
+            self?.deviceNameLabel.text = "\(name)"
             switch distance {
             case .far:
-                self.alertController()
-                self.view.backgroundColor = .blue
-                self.distanceReading.text = "FAR"
-                self.deviceNameLabel.text = "\(name)"
-                self.isDetected = true
+                self?.alertController()
+                self?.view.backgroundColor = .blue
+                self?.distanceReading.text = "FAR"
+                self?.circleView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+                self?.isDetected = true
             case .near:
-                self.alertController()
-                self.view.backgroundColor = .orange
-                self.distanceReading.text = "NEAR"
-                self.deviceNameLabel.text = "\(name)"
-                self.isDetected = true
+                self?.alertController()
+                self?.view.backgroundColor = .orange
+                self?.distanceReading.text = "NEAR"
+                self?.circleView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                self?.isDetected = true
             case .immediate:
-                self.alertController()
-                self.view.backgroundColor = .red
-                self.distanceReading.text = "RIGHT HERE"
-                self.deviceNameLabel.text = "\(name)"
-                self.isDetected = true
+                self?.alertController()
+                self?.view.backgroundColor = .red
+                self?.distanceReading.text = "RIGHT HERE"
+                self?.circleView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self?.isDetected = true
            default:
-                self.view.backgroundColor = .gray
-                self.distanceReading.text = "UNKNOWN"
-                self.deviceNameLabel.text = "\(name)"
-                self.isDetected = false
+                self?.view.backgroundColor = .gray
+                self?.distanceReading.text = "UNKNOWN"
+                self?.circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+                self?.isDetected = false
             }
         }
     }
