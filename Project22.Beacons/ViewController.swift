@@ -15,6 +15,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var distanceReading: UILabel!
     // Менеджер положения: начинает и останавливает предоставлениеданных о местоположении
     var locationManager: CLLocationManager?
+    //переменная для определения найден маяк или нет
+    var isDetected = false
     
     
     override func viewDidLoad() {
@@ -58,28 +60,43 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         UIView.animate(withDuration: 1) {
             switch distance {
             case .far:
+                self.alertController()
                 self.view.backgroundColor = .blue
                 self.distanceReading.text = "FAR"
+                self.isDetected = true
             case .near:
+                self.alertController()
                 self.view.backgroundColor = .orange
                 self.distanceReading.text = "NEAR"
+                self.isDetected = true
             case .immediate:
+                self.alertController()
                 self.view.backgroundColor = .red
                 self.distanceReading.text = "RIGHT HERE"
+                self.isDetected = true
                 
            default:
                 self.view.backgroundColor = .gray
                 self.distanceReading.text = "UNKNOWN"
+                self.isDetected = false
             }
         }
     }
     
-    // Нужна для обнаружения всех маяков в радиусе действия и добавляет их в массив в случае обнаружения  
+    // Нужна для обнаружения всех маяков в радиусе действия и добавляет их в массив в случае обнаружения
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         if let beacon = beacons.first {
             update(distance: beacon.proximity)
         } else {
             update(distance: .unknown)
+        }
+    }
+    
+    func alertController() {
+        if !isDetected {
+            let ac = UIAlertController(title: "Device found", message: "Your device was found", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Okay", style: .cancel))
+            present(ac, animated: true)
         }
     }
 
