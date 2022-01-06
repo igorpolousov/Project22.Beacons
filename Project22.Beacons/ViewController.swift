@@ -1,7 +1,7 @@
 //
 //  ViewController.swift
 //  Project22.Beacons
-//
+//  Day 75-76
 //  Created by Igor Polousov on 20.12.2021.
 //
 
@@ -37,7 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // начальное название устройства
         deviceNameLabel.text = "Device not detected"
         
-        circleView.layer.cornerRadius = 128
+        circleView.layer.cornerRadius = 120
         circleView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
     }
 
