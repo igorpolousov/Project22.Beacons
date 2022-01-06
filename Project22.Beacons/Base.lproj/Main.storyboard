@@ -22,15 +22,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfR-CO-7GS">
+                                <rect key="frame" x="97.5" y="286" width="219" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="riA-GE-RUG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6Od-pj-QOS"/>
+                            <constraint firstItem="TfR-CO-7GS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="97.5" id="Gyh-iX-93m"/>
+                            <constraint firstItem="TfR-CO-7GS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="242" id="PQW-za-Tb2"/>
+                            <constraint firstItem="TfR-CO-7GS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VBn-Nd-fov"/>
                             <constraint firstItem="riA-GE-RUG" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="XZK-iJ-fZh"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deviceNameLabel" destination="TfR-CO-7GS" id="9oY-CA-6qH"/>
                         <outlet property="distanceReading" destination="riA-GE-RUG" id="H13-3I-G9G"/>
                     </connections>
                 </viewController>
